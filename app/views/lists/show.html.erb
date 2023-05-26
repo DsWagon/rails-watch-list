@@ -1,5 +1,4 @@
-<div class="position-relative">
-  <div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('2063931.jpg') %>)">
+
   <h1><%= @list.name  %></h1>
   </div>
   <span class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></span>
@@ -12,7 +11,7 @@
       <%= link_to "Delete movie", bookmark_path(bookmark),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       <% end %>
     </div>
-</div>
+  </div>
 
 
 

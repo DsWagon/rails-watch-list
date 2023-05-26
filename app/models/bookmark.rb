@@ -4,4 +4,3 @@ class Bookmark < ApplicationRecord
   validates :comment, presence: true, length: {minimum: 6}
   validates_uniqueness_of :movie, scope: :list
 end
-herok
