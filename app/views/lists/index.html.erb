@@ -1,16 +1,15 @@
-<h1>Lists</h1>
-
-
-<div class="container">
-  <% @lists.each do |list| %>
-  <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</div>
-
-
-<div>
-<%= link_to new_list_path, class: "btn btn-primary" do %>
-New list
-<% end %>
-</div>
+<nav class="navbar bg-body-tertiary" >
+  <div class="container-fluid py-5" >
+    <span class="navbar-brand mb-0 h1">List of movies category</span>
+    <%= link_to new_list_path, class: "btn btn-primary" do %>
+    New list
+    <% end %>
+  </div>
 </nav>
+
+
+<div class="row col align-self-center">
+      <% @lists.each do |list| %>
+      <%= link_to list.name, list_path(list) %>
+      <% end %>
+</div>

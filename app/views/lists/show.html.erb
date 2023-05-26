@@ -1,17 +1,23 @@
-<h1><%= @list.name  %></h1>
-
-
+<div class="position-relative">
+  <div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('2063931.jpg') %>)">
+  <h1><%= @list.name  %></h1>
+  </div>
+  <span class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></span>
     <% @list.bookmarks.each do |bookmark| %>
-    <%= bookmark.movie.title %>
+    <h2><%= bookmark.movie.title %></h2>
     <%= bookmark.movie.overview %>
     <%= image_tag bookmark.movie.poster_url, width: 200 %>
     <%= bookmark.comment %>
-    <%= link_to "Delete movie", bookmark_path(bookmark),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    <% end %>
-
-
-<div>
+    <div>
+      <%= link_to "Delete movie", bookmark_path(bookmark),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
+    </div>
 </div>
+
+
+
+
+<hr>
 <div>
   <%= link_to "Back to Lists", lists_path %>
 </div>
