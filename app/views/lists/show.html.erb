@@ -1,25 +1,58 @@
 
-  <h1><%= @list.name  %></h1>
-  </div>
-  <span class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></span>
+<% if false %>
+
     <% @list.bookmarks.each do |bookmark| %>
     <h2><%= bookmark.movie.title %></h2>
     <%= bookmark.movie.overview %>
     <%= image_tag bookmark.movie.poster_url, width: 200 %>
     <%= bookmark.comment %>
     <div>
-      <%= link_to "Delete movie", bookmark_path(bookmark),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <! lors d'un link_to class doit être après le path>
+      <%= link_to "Delete movie", bookmark_path(bookmark), class:"btn btn-danger m-5", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       <% end %>
     </div>
-  </div>
+<% end %>
+
+ <div class="container-fluid py-5" >
+    <nav class="navbar nav-background ">
+      <span class="navbar-brand mb-0 h1"><h1><%= @list.name  %></h1></span>
+      <%= link_to "Back to Lists", lists_path, class: "btn btn-primary m-5"%>
+      <%= link_to "Add a movie", new_list_bookmark_path(@list), class:"btn btn-primary"%>
+  </nav>
+</div>
 
 
 
+<div class="d-flex justify-content-center">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card m-3" style="width: 18rem;">
+      <%= image_tag bookmark.movie.poster_url, class: "card-img-top mx-auto d-block", width: 50 %>
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= bookmark.movie.title %></h5>
+          <p class="card-text"><%= bookmark.movie.overview %></p>
+          <hr>
+          <p class="card-text"><%= bookmark.comment %></p>
+          <%= link_to "Delete movie", bookmark_path(bookmark), class:"btn btn-danger m-5", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div>
+
+</div>
 
 <hr>
-<div>
-  <%= link_to "Back to Lists", lists_path %>
-</div>
-<div>
-  <%= link_to "Add a movie", new_list_bookmark_path(@list)%>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> from David
+  </div>
 </div>
